@@ -1,1 +1,346 @@
 # prokopenkomiroslav3-boop.github.io
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Game Store</title>
+
+  <!-- Подключаем шрифт (можно удалить или заменить) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --purple:#6a0b6a;
+      --dark:#0a0a0a;
+      --panel:#6a0b6a;
+      --pill-bg: #0a0a0a;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--purple) 0%, #4d0a4d 100%);
+      -webkit-font-smoothing:antialiased;
+      color:#fff;
+      padding:28px;
+    }
+
+    /* Внешняя рамка (чёрная) */
+    .site{
+      max-width:980px;
+      margin: 0 auto;
+      background: #000;
+      padding:28px;
+      border-radius:10px;
+      box-shadow: 0 0 0 8px rgba(0,0,0,0.3), 0 8px 30px rgba(0,0,0,0.6);
+    }
+
+    /* Хедер: слева логотип, справа кнопка Войти */
+    .header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:18px;
+    }
+    .brand-pill, .login-pill{
+      background: var(--pill-bg);
+      padding:10px 16px;
+      border-radius:14px;
+      display:inline-block;
+      font-weight:800;
+      font-size:16px;
+      color:#fff;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.6);
+      text-decoration:none;
+    }
+    .login-pill{cursor:pointer}
+
+    /* Центральный блок с шапкой (полоска фиолетовой вывески над черным) */
+    .hero{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin-bottom:18px;
+    }
+    .hero-bubble{
+      background: var(--panel);
+      color:#fff;
+      padding:18px 26px;
+      border-radius:12px;
+      display:inline-block;
+      font-weight:800;
+      text-align:center;
+      font-size:20px;
+      -webkit-text-stroke: 1px rgba(0,0,0,0.6);
+      box-shadow: 0 6px 0 rgba(0,0,0,0.6);
+    }
+    .hero-sub{
+      display:block;
+      margin-top:10px;
+      font-weight:600;
+      font-size:13px;
+      opacity:0.95;
+      background: #3f0a3f;
+      padding:6px 12px;
+      border-radius:10px;
+      margin-left:auto;
+      margin-right:auto;
+      width:60%;
+    }
+
+    /* Секция с карточками игр */
+    .section{
+      background: var(--panel);
+      padding:18px;
+      border-radius:18px;
+      margin-bottom:22px;
+      box-shadow: 0 10px 0 rgba(0,0,0,0.6);
+    }
+
+    .tabs{
+      display:flex;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .tab{
+      background:var(--pill-bg);
+      padding:8px 14px;
+      border-radius:14px;
+      font-weight:800;
+      box-shadow:0 6px 0 rgba(0,0,0,0.6);
+      cursor:default;
+    }
+
+    .game-row{
+      display:flex;
+      gap:22px;
+      align-items:center;
+      flex-wrap:wrap;
+      padding:8px 6px;
+    }
+
+    .game-card{
+      width:160px;
+      text-align:center;
+    }
+    .game-thumb{
+      width:160px;
+      height:90px;
+      border-radius:4px;
+      object-fit:cover;
+      display:block;
+      margin-bottom:8px;
+      border:6px solid rgba(0,0,0,0.45);
+    }
+    .game-label{
+      display:inline-block;
+      background:var(--pill-bg);
+      padding:8px 14px;
+      border-radius:14px;
+      font-weight:800;
+      box-shadow:0 6px 0 rgba(0,0,0,0.6);
+      cursor:default;
+      margin-top:6px;
+    }
+
+    /* Кнопка Купить (напр. центральная) */
+    .buy-btn{
+      display:inline-block;
+      background:var(--pill-bg);
+      padding:10px 18px;
+      border-radius:16px;
+      font-weight:900;
+font-size:16px;
+      margin-left:8px;
+      cursor:pointer;
+      box-shadow:0 6px 0 rgba(0,0,0,0.6);
+      text-decoration:none;
+      color:#fff;
+    }
+
+    /* Секция пополнения */
+    .wallet-section{
+      background:var(--panel);
+      padding:18px;
+      border-radius:18px;
+      margin-bottom:22px;
+      box-shadow: 0 10px 0 rgba(0,0,0,0.6);
+    }
+    .wallet-title{
+      display:inline-block;
+      background:var(--pill-bg);
+      padding:8px 12px;
+      border-radius:12px;
+      font-weight:800;
+      margin-bottom:12px;
+      box-shadow:0 6px 0 rgba(0,0,0,0.6);
+    }
+    .wallet-inner{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .wallet-card{
+      width:320px;
+      background: linear-gradient(180deg,#111,#222);
+      border-radius:6px;
+      padding:12px;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+    }
+    .wallet-card img{width:100%; border-radius:4px; display:block; margin-bottom:8px}
+    .wallet-top-btn{
+      display:inline-block;
+      background:var(--pill-bg);
+      padding:10px 16px;
+      border-radius:14px;
+      font-weight:900;
+      box-shadow:0 6px 0 rgba(0,0,0,0.6);
+      cursor:pointer;
+      color:#fff;
+      text-decoration:none;
+    }
+
+    /* Гарантии - 4 блока */
+    .guarantee{
+      margin-top:8px;
+      text-align:center;
+      font-weight:900;
+      font-size:18px;
+      padding-top:12px;
+      padding-bottom:8px;
+    }
+    .guarantee-grid{
+      display:grid;
+      grid-template-columns: repeat(2,1fr);
+      gap:22px;
+      margin-top:12px;
+    }
+    .guarantee-item{
+      background:var(--panel);
+      padding:18px;
+      border-radius:12px;
+      box-shadow: 0 8px 0 rgba(0,0,0,0.6);
+      min-height:80px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      font-weight:800;
+    }
+
+    /* Подвал */
+    .footer{
+      text-align:center;
+      margin-top:26px;
+      padding-top:18px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* Мобильное */
+    @media (max-width:720px){
+      .game-row{justify-content:center}
+      .guarantee-grid{grid-template-columns:1fr}
+      .site{padding:18px}
+      .hero-bubble{font-size:18px}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="site">
+    <div class="header">
+      <div class="brand-pill">Game Store</div>
+      <a class="login-pill tg-link" data-link="https://t.me/RugamestoreRu_bot">Войти</a>
+    </div>
+
+    <div class="hero" >
+      <div>
+        <div class="hero-bubble">Экосистема для геймеров, созданная геймерами 🎮</div>
+        <span class="hero-sub">Покупай игры, пополняй кошелёк Steam и не только</span>
+      </div>
+    </div>
+
+    <!-- Секция Игры -->
+    <section class="section">
+      <div class="tabs">
+        <div class="tab">Игры</div>
+        <div class="tab">Гифтом</div>
+      </div>
+
+      <div class="game-row">
+        <div class="game-card">
+          <img src="https://i.yapx.ru/cFP4d.png" alt="Rust" class="game-thumb">
+          <div class="game-label">Rust</div>
+        </div>
+
+        <div class="game-card">
+          <img src="https://i.yapx.ru/cFP7M.png" alt="GTA5" class="game-thumb">
+          <div class="game-label">Gta 5</div>
+        </div>
+
+        <div class="game-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center">
+          <a class="buy-btn tg-link" data-link="https://t.me/RugamestoreRu_bot">Купить</a>
+        </div>
+
+        <div class="game-card">
+          <img src="https://i.yapx.ru/cFP8i.png" alt="Subnautica" class="game-thumb">
+          <div class="game-label">Subnautica</div>
+        </div>
+
+        <div class="game-card">
+          <img scr="https://i.yapx.ru/cFQA2.png" alt="Teardown" class="game-thumb">
+          <div class="game-label">Teardown</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция пополнения кошельков -->
+    <section class="wallet-section">
+<div class="wallet-title">Пополнение кошельков сервисов</div>
+
+      <div class="wallet-inner">
+        <div class="wallet-card">
+          <!-- Замените изображение на ваш баннер пополнения -->
+          <img src="https://i.yapx.ru/cFPo2.png" alt="Steam">
+          <a class="wallet-top-btn tg-link" data-link="https://t.me/RugamestoreRu_bot">Попонить</a>
+        </div>
+
+        <!-- Дополнительное место справа пустое, как на макете -->
+        <div style="flex:1"></div>
+      </div>
+    </section>
+
+    <div class="guarantee">Game Store Гарантирует</div>
+    <div class="guarantee-grid">
+      <div class="guarantee-item">Большой выбор<br>Широкий ассортимент для каждого</div>
+      <div class="guarantee-item">Надежность<br>Платёж защищён. Твой аккаунт и данные в безопасности</div>
+      <div class="guarantee-item">Низкие цены<br>Скидки, распродажи и много конкурсов</div>
+      <div class="guarantee-item">Скорость сервиса<br>Быстрая доставка товаров легко и просто</div>
+    </div>
+
+    <div class="footer">
+      <div style="font-weight:900; font-size:20px; margin-top:18px">Game Store - сервис, которому доверяют</div>
+      <div style="margin-top:18px; font-weight:800">Game Store</div>
+      <div style="font-weight:800; margin-top:6px">Game Store, 2025</div>
+    </div>
+  </div>
+
+  <script>
+    // Все элементы с классом tg-link будут открывать телеграм-бота
+    const TG_LINK = 'https://t.me/RugamestoreRu_bot';
+
+    document.querySelectorAll('.tg-link').forEach(el=>{
+      el.addEventListener('click', function(e){
+        // если это ссылка <a> с href не задан — переопределим
+        const link = el.dataset.link || TG_LINK;
+        // открываем в новой вкладке
+        window.open(link, '_blank', 'noopener');
+      });
+    });
+  </script>
+</body>
+</html>
